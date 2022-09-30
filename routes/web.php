@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [ProductController::class,'indexMain'])->name('welcome');
 
 Route::get('/login',[UserController::class,'login'])->name('login');
 Route::post('/login',[UserController::class,'loginPost']);
@@ -33,7 +32,13 @@ Route::middleware('auth')->group(function (){
                 Route::resource('/product', ProductController::class);
             });
         });
+        Route::group(['prefix'=>'/order','as'=>'order.'],function (){
+           Route::get('/basket',[OrderController::class,'basket'])->name('basket');
+        });
     });
 
+    Route::get('/cabinet', [UserController::class,'cabinet'])->name('cabinet');
+    Route::get('/cabinet/edit', [UserController::class,'cabinetEdit'])->name('cabinetEdit');
+    Route::POST('/cabinet/edit', [UserController::class,'cabinetEditPost']);
     Route::get('/logout',[UserController::class,'logout'])->name('logout');
 });

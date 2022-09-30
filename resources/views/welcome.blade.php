@@ -41,7 +41,7 @@
                                 <a class="nav-link" href="#">Мои заказы</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Мой аккаунт</a>
+                                <a class="nav-link" href="{{route('cabinet')}}">Мой аккаунт</a>
                             </li>
                             @if(Auth::user()->role=='admin')
                                 <li class="nav-item dropdown">
@@ -56,6 +56,9 @@
                                     </ul>
                                 </li>
                                 @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('order.basket')}}">Корзина</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('logout')}}">Выход</a>
                             </li>
