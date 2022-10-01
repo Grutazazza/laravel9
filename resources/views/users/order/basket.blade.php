@@ -17,13 +17,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(session()->has('basket'))
-                        @forelse(session()->get('basket') as $item)
+                        @if(isset($products))
+                        @forelse($products as $product)
                             <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
+                                <td><img src="/public/storage/{{$product->photo}}"></td>
+                                <td>{{$product->name}}</td>
+                                <td>{{$product->price}}</td>
+                                <td>{{session('basket')[$product->id]}}</td>
                             </tr>
                         @empty
                             <tr>
