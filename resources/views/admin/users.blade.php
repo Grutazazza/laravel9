@@ -26,7 +26,7 @@
                                         <th scope="col">{{$user->id}}</th>
                                         <th scope="col">{{$user->login}}</th>
                                         <th scope="col">{{$user->email}}</th>
-                                        <th scope="col">{{$user->fulltime}}</th>
+                                        <th scope="col">{{$user->fullname}}</th>
                                         <th scope="col">{{$user->address}}</th>
                                         <th scope="col">{{$user->role}}</th>
                                         <th scope="col">{{$user->created_at}}</th>
