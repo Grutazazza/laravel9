@@ -83,4 +83,11 @@ class UserController extends Controller
         $request->session()->regenerate();
         return redirect()->route('login');
     }
+
+    public function users()
+    {
+        $users = User::select('*');
+        $usersItems = $users->get();
+        return view('admin.users',['users'=>$usersItems]);
+    }
 }
